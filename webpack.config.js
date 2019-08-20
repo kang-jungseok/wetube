@@ -12,7 +12,7 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.(js)$/,
+        test: /\.js$/,
         use: [
           {
             loader: 'babel-loader',
@@ -20,7 +20,7 @@ const config = {
         ],
       },
       {
-        test: /\.(.scss)$/,
+        test: /\.scss$/,
         use: ExtractCSS.extract([
           {
             loader: 'css-loader',
