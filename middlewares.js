@@ -1,30 +1,31 @@
 import multer from 'multer';
 import routes from './routes';
-import {exportDefaultSpecifier} from 'babel-types';
 
-const multerVideo = multer({dest: 'uploads/videos/'});
+const multerVideo = multer ({dest: 'uploads/videos/'});
+const multerAvatar = multer ({dest: 'uploads/avatar/'});
 
 export const localsMiddlewares = (req, res, next) => {
   res.locals.siteName = 'Wetube';
   res.locals.routes = routes;
   res.locals.loggedUser = req.user || null;
-  next();
+  next ();
 };
 
 export const onlyPublic = (req, res, next) => {
   if (req.user) {
-    res.redirect(routes.home);
+    res.redirect (routes.home);
   } else {
-    next();
+    next ();
   }
 };
 
 export const onlyPrivate = (req, res, next) => {
-  if ((req, user)) {
-    next();
+  if (req.user) {
+    next ();
   } else {
-    res.redirect(routes.home);
+    res.redirect (routes.home);
   }
 };
 
-export const uploadVideo = multerVideo.single('videoFile');
+export const uploadVideo = multerVideo.single ('videoFile');
+export const uploadAvatar = multerAvatar.single ('avatar');
